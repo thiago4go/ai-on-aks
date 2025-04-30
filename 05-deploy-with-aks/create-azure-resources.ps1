@@ -114,7 +114,7 @@ if (! $skipCreatingResourceGroup) {
 
 
 # Create MongoDB resources
-$cosmosCluster = if ($cosmosCluster) {$cosmosCluster} elseif ($useEnvFile -and $envVars['cosmosCluster']) { $envVars['cosmosCluster'] } else { "msdocs-account-cosmos-cluster-$randomIdentifier" } #needs to be lower case
+$cosmosCluster = if ($cosmosCluster) {$cosmosCluster} elseif ($useEnvFile -and $envVars['cosmosCluster']) { $envVars['cosmosCluster'] } else { "msdocs-cosmos-cluster-$randomIdentifier" } #needs to be lower case
 $cosmosClusterLocation = if ($cosmosClusterLocation) {$cosmosClusterLocation} elseif ($useEnvFile -and $envVars['cosmosClusterLocation']) { $envVars['cosmosClusterLocation'] } else { $location } 
 $cosmosClusterAdmin = if ($cosmosClusterAdmin) {$cosmosClusterAdmin} elseif ($useEnvFile -and $envVars['cosmosClusterAdmin']) { $envVars['cosmosClusterAdmin'] } else { "clusteradmin$randomIdentifier" }
 $tempPW = -join ((48..57) + (65..90) + (97..122) + (33..33) + (36..38) + (40..47) + (58..64) + (91..95) + (123..126) | Get-Random -Count 16 | % {[char]$_})
