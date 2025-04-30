@@ -1,0 +1,35 @@
+{
+    "name": "Copilot on AKS (Codespaces)",
+    // Use Microsoft' Universal base for fastest startup
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+  
+    // Add extra tools via a Dockerfile layer
+    "features": {
+      // Node 20 LTS via devcontainer-features registry
+      "ghcr.io/devcontainers/features/node:1": {
+        "version": "20"
+      },
+      // Azure CLI (includes kubelogin)
+      "ghcr.io/devcontainers/features/azure-cli:1": {},
+      // kubectl + Helm
+      "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+        "kubectl": "latest",
+        "helm": "latest",
+        "minikube": "none"
+      }
+    },
+  
+    // The workspace folder is the repo root in Codespaces
+    "postCreateCommand": "npm install --prefix 05-deploy-with-aks",
+  
+    // Recommended VS Code extensions for the lab
+    "extensions": [
+      "ms-azuretools.vscode-docker",
+      "ms-azuretools.vscode-azurecli",
+      "dbaeumer.vscode-eslint"
+    ],
+  
+    // Forward the sample app port
+    "forwardPorts": [3000]
+  }
+  
