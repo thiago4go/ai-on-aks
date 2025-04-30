@@ -16,11 +16,17 @@
         "kubectl": "latest",
         "helm": "latest",
         "minikube": "none"
-      }
+      },
+      //Docker in Docker
+      "ghcr.io/devcontainers/features/docker-in-docker:2": {}
     },
   
     // The workspace folder is the repo root in Codespaces
-    "postCreateCommand": "npm install --prefix 05-deploy-with-aks",
+    "postCreateCommand": [
+      // wait until DinD is ready, then install deps
+      "sudo service docker start && while ! docker info >/dev/null 2>&1; do sleep 1; done",
+      "npm install --prefix 05-deploy-with-aks"
+    ],
   
     // Recommended VS Code extensions for the lab
     "extensions": [
