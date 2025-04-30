@@ -18,7 +18,9 @@
         "minikube": "none"
       },
       //Docker in Docker
-      "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+      "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+          // ➕ PowerShell Core
+      "ghcr.io/devcontainers/features/powershell:1": {}
     },
   
     // The workspace folder is the repo root in Codespaces
